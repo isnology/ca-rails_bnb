@@ -19,8 +19,6 @@
 #  latitude           :decimal(10, 6)
 #  longitude          :decimal(10, 6)
 #
-require 'money'
-
 class Listing < ApplicationRecord
   geocoded_by :full_address   # can also be an IP address
   after_validation :geocode #, if: ->(obj){ obj.full_address.present? and obj.full_address_changed? } # auto-fetch
@@ -28,8 +26,7 @@ class Listing < ApplicationRecord
 
   monetize :night_fee_cents
   monetize :cleaning_fee_cents
-
-
+  
   def country
     ISO3166::Country.new(country_code.upcase)
   end

@@ -34,7 +34,7 @@ gem 'annotate'
 gem 'devise'
 gem 'countries'
 gem 'geocoder'
-gem 'money-rails', '~>1'
+gem 'money-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

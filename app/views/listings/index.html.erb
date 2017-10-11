@@ -30,8 +30,8 @@
         <td><%= listing.bedroom_count %></td>
         <td><%= listing.bathroom_count %></td>
         <td><%= listing.description %></td>
-        <td>$<%= listing.night_fee %></td>
-        <td>$<%= listing.cleaning_fee %></td>
+        <td><%= listing.night_fee.format %></td>
+        <td><%= listing.cleaning_fee.format %></td>
         <td><%= link_to 'Show', listing, class: 'btn btn-success btn-sm'%></td>
         <td><%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-warning btn-sm' %></td>
         <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn
