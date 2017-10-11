@@ -33,6 +33,7 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'annotate'
 gem 'devise'
 gem 'countries'
+gem 'geocoder'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
