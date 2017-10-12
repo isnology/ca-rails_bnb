@@ -20,6 +20,15 @@
 #  longitude          :decimal(10, 6)
 #
 class Listing < ApplicationRecord
+  validates :title, presence: true
+  validates :street_address, presence: true
+  validates :city, presence: true
+  validates :country_code, presence: {message: -> (listing, data) { "No country for code: #{listing.country_code}"}}
+  validates :bed_count, numericality: {greater_than: 0}
+  validates :bedroom_count, numericality: {greater_than: 0}
+  validates :bathroom_count, numericality: {greater_than: 0}
+  validates :night_fee_cents, numericality: {greater_than: 0}
+  
   geocoded_by :full_address   # can also be an IP address
   after_validation :geocode #, if: ->(obj){ obj.full_address.present? and obj.full_address_changed? } # auto-fetch
   # coordinates
@@ -32,6 +41,7 @@ class Listing < ApplicationRecord
   end
   
   def full_address
+    return nil if country.nil?
     "#{street_address}, #{city}, #{country.name}"
   end
 end
