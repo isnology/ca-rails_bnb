@@ -6,6 +6,47 @@
 </p>
 
 <p>
+  Per Night:
+  <%= @listing.night_fee.format %>
+</p>
+
+<%= form_with(model: @booking, local: true) do |form| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+        <% @booking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.submit 'Book', class: 'wide btn btn-warning' %>
+
+  <%= form.hidden_field :listing_id %>
+  <%= form.hidden_field :guest_id %>
+
+  <div class="field">
+    <%= form.label :check_in_at %>
+    <%= form.date_field :check_in_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :check_out_at %>
+    <%= form.date_field :check_out_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :guest_count %>
+    <%= form.number_field :guest_count %>
+  </div>
+
+<% end %>
+
+
+<p>
   <strong>Street address:</strong>
   <%= @listing.street_address %>
 </p>
@@ -46,14 +87,10 @@
 </p>
 
 <p>
-  <strong>Night fee:</strong>
-  <%= @listing.night_fee.format %>
-</p>
-
-<p>
   <strong>Cleaning fee:</strong>
   <%= @listing.cleaning_fee.format %>
 </p>
 
+<%= button_to 'Messages', conversations_path(listing: @listing, method: :post), class: 'btn btn-warning' %>
 <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-warning' %>
 <%= link_to 'Back', listings_path, class: 'btn btn-success' %>

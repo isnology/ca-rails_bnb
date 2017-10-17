@@ -1,10 +1,8 @@
-development:
-  adapter: async
+development: &development
+  adapter: postgresql
 
-test:
-  adapter: async
+test: *development
 
-production:
-  adapter: redis
-  url: redis://localhost:6379/1
-  channel_prefix: ca-rails_bnb_production
+production: &production
+  adapter: postgresql
+

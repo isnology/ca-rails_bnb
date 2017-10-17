@@ -1,0 +1,42 @@
+<%= form_with(model: booking, local: true) do |form| %>
+  <% if booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :guest %>
+    <%= form.text_field :guest, id: :booking_guest %>
+  </div>
+
+  <div class="field">
+    <%= form.label :check_in_at %>
+    <%= form.date_select :check_in_at, id: :booking_check_in_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :check_out_at %>
+    <%= form.date_select :check_out_at, id: :booking_check_out_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :guest_count %>
+    <%= form.number_field :guest_count, id: :booking_guest_count %>
+  </div>
+
+  <div class="field">
+    <%= form.label :charge_identifier %>
+    <%= form.text_field :charge_identifier, id: :booking_charge_identifier %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: 'btn btn-warning' %>
+  </div>
+<% end %>

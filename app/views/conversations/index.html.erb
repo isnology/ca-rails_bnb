@@ -1,0 +1,24 @@
+
+<h1>Conversations</h1>
+
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Listing</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @conversations.each do |conversation| %>
+      <tr>
+        <td><%= conversation.user.email %></td>
+        <td><%= conversation.listing.title %></td>
+        <td><%= link_to 'Messages', messages_path(conversation_id: conversation.id), class: 'btn
+        btn-warning' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Back', listing_path(@conversations.first.listing), class: 'btn btn-success' %>

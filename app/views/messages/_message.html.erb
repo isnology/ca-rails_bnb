@@ -1,0 +1,9 @@
+<div class="message">
+  <div class="message-user">
+    <%= message.user == message.conversation.listing.host ? message.conversation.listing.title : message.user
+        .email.split('@')[0] %>:
+  </div>
+  <div class="message-content">
+    <%= sanitize markdown_to_html(message.content) %>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="message-input">
+  <%= form_for(@message, remote: true) do |f| %>
+    <%= f.text_area :content %>
+    <%= f.submit "Send" %>
+    <%= f.hidden_field :conversation_id %>
+    <%= f.hidden_field :user_id %>
+  <% end %>
+</div>

@@ -1,0 +1,6 @@
+<% provide(:extra_body_attributes, "data-room-name=#{@conversation.id}") %>
+<div class="message-wr">
+  <%= render 'messages' %>
+  <%= render 'message_form' %>
+  <%= link_to 'Back', conversations_path(listing: @conversation.listing), class: 'btn btn-success'%>
+</div>

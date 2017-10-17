@@ -29,6 +29,9 @@ class Listing < ApplicationRecord
   validates :bathroom_count, numericality: {greater_than: 0}
   validates :night_fee_cents, numericality: {greater_than: 0}
   
+  has_many :conversations
+  belongs_to :host, class_name: 'User'
+  
   geocoded_by :full_address   # can also be an IP address
   after_validation :geocode #, if: ->(obj){ obj.full_address.present? and obj.full_address_changed? } # auto-fetch
   # coordinates
@@ -45,3 +48,4 @@ class Listing < ApplicationRecord
     "#{street_address}, #{city}, #{country.name}"
   end
 end
+

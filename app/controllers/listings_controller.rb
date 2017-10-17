@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:show]
 
   # GET /listings
   # GET /listings.json
@@ -10,6 +11,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @booking = Booking.new(check_in_at: Date.today, listing_id: @listing.id, guest_id: current_user)
   end
 
   # GET /listings/new

@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -35,6 +36,9 @@ gem 'devise'
 gem 'countries'
 gem 'geocoder'
 gem 'money-rails'
+gem 'jquery-rails'
+gem 'mailgun-ruby', '~>1.1.6'
+gem 'kramdown'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
