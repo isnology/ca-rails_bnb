@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :listings
   resources :conversations, only: [:index, :create]
   resources :messages, only: [:index, :create]
-  resources :bookings, only: [:new, :create]
+  resources :bookings
   
   get '/support' => 'support#new'
   post '/support' => 'support#create'

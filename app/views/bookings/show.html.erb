@@ -2,12 +2,12 @@
 
 <p>
   <strong>Listing:</strong>
-  <%= @booking.listing %>
+  <%= @booking.listing.title %>
 </p>
 
 <p>
   <strong>Guest:</strong>
-  <%= @booking.guest %>
+  <%= @booking.guest.email %>
 </p>
 
 <p>
@@ -30,5 +30,5 @@
   <%= @booking.charge_identifier %>
 </p>
 
-<%= link_to 'Edit', edit_booking_path(@booking) %> |
-<%= link_to 'Back', bookings_path %>
+<%= link_to 'Edit', edit_booking_path(@booking), class: 'btn btn-warning' %>
+<%= link_to 'Back', bookings_path, class: 'btn btn-success'  %>

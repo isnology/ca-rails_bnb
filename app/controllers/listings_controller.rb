@@ -11,7 +11,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   # GET /listings/1.json
   def show
-    @booking = Booking.new(check_in_at: Date.today, listing_id: @listing.id, guest_id: current_user)
+    @booking = Booking.new(check_in_at: Date.today, listing_id: @listing.id, guest_id: current_user.id)
   end
 
   # GET /listings/new
