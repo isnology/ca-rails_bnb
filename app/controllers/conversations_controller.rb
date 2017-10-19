@@ -8,6 +8,7 @@ class ConversationsController < ApplicationController
     @listing = Listing.find(params[:listing])
     if current_user == @listing.host
       @conversations = Conversation.where(listing_id: params[:listing])
+      @messages = Message.where(read: :false)
     else
       @conversations = Conversation.where(user: current_user).where(listing_id: params[:listing])
     end
@@ -16,8 +17,6 @@ class ConversationsController < ApplicationController
   # GET /conversations/1
   # GET /conversations/1.json
   def show
-    #@current_user = current_user
-    #@messages = Message.where(conversation: @conversation).order(:created_at)
   end
 
   # GET /conversations/new

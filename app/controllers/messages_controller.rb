@@ -13,6 +13,9 @@ class MessagesController < ApplicationController
     if message.save
       ActionCable.server.broadcast "room_channel_#{@conversation.id}",
                                      message: render_message(message)
+      if current_user == @conversation.listing.host_id
+      
+      end
     end
   end
 
